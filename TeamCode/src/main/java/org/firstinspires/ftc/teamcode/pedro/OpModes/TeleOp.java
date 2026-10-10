@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.pedro.OpModes;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gamepad1;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import com.pedropathing.follower.Follower;
 
 import org.firstinspires.ftc.teamcode.pedro.Constants;
