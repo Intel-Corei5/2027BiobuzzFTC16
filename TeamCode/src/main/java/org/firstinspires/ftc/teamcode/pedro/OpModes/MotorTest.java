@@ -17,20 +17,27 @@ public class MotorTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         DcMotorEx test = hardwareMap.get(DcMotorEx.class, "test");
+        DcMotorEx test2 = hardwareMap.get(DcMotorEx.class, "test2");
         test.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        test.setDirection(DcMotorSimple.Direction.REVERSE);
+        test.setDirection(DcMotorSimple.Direction.FORWARD);
+        test2.setDirection(DcMotorSimple.Direction.FORWARD);
+        test2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
         waitForStart();
 
         while(opModeIsActive()) {
             double power = 0;
-            double velocity = 1120;
+            double velocity = 1500;
             double RPM = (test.getVelocity()/ 28) * 60 ;
+            double currentVelcity = test.getVelocity();
 
 
             test.setVelocity(velocity);
+            test2.setVelocity(velocity);
 
-            telemetry.addData("RPM", RPM);
+
+            telemetry.addData("RPM", currentVelcity);
             telemetry.update();
         }
 
