@@ -14,10 +14,30 @@ public class Shooter {
      DcMotorEx PollenMotor = hardwareMap.get(DcMotorEx.class, "PollenMotor");
 
 
-    public void shootOne(){
+    public void shootOneNecter(){
         if (gamepad1.aWasPressed()) {
-
+            NecterServo.setPosition(0); // TESTING REQUIRED FOR POSITION OF MOTOR
+            NecterMotor.setPIDFCoefficients();
+            NecterServo.setPosition(0); // TESTING REQUIRED FOR POSITION OF MOTOR
         }
     }
-
+    public void shootOnePollen(){
+        if (gamepad1.aWasPressed()) {
+            PollenServo.setPosition(0); // TESTING REQUIRED FOR POSITION OF MOTOR
+            PollenMotor.setPIDFCoefficients();
+            PollenServo.setPosition(0);
+        }
+    }
+    public void rapidNecter(){
+        if (gamepad1.aWasPressed()) {
+            NecterServo.setPosition(0); // TESTING REQUIRED FOR POSITION OF MOTOR
+            NecterMotor.setPIDFCoefficients();
+        }
+    } public void rapidPollen(){
+        if (gamepad1.aWasPressed()) {
+            PollenServo.setPosition(0); // TESTING REQUIRED FOR POSITION OF MOTOR
+            PollenMotor.setPIDFCoefficients();
+        }
+    }
 }
+
