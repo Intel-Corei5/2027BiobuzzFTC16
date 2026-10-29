@@ -18,13 +18,13 @@ public class MotorTest extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        Servo Servo = hardwareMap.get(Servo.class, "Servo");
+        //Servo Servo = hardwareMap.get(Servo.class, "Servo");
         DcMotorEx test = hardwareMap.get(DcMotorEx.class, "test");
-        DcMotorEx test2 = hardwareMap.get(DcMotorEx.class, "test2");
+        //DcMotorEx test2 = hardwareMap.get(DcMotorEx.class, "test2");
         test.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        test2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+       // test2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         test.setDirection(DcMotorSimple.Direction.FORWARD);
-        test2.setDirection(DcMotorSimple.Direction.REVERSE);
+        //test2.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
         waitForStart();
@@ -34,11 +34,11 @@ public class MotorTest extends LinearOpMode {
             double velocity = 1500;
 
 
-            //test.setVelocity(1500);
+            test.setVelocity(3000);
             //test2.setPIDFCoefficients(1500);
 
 
-            telemetry.addData("wut", test2.getVelocity());
+            telemetry.addData("wut", test.getVelocity());
             telemetry.update();
         }
 
