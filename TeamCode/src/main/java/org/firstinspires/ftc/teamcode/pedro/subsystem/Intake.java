@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.pedro.subsystem;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
@@ -12,6 +13,7 @@ public class Intake {
     }
     public void intake(Gamepad gamepad) {
         if (gamepad.aWasPressed()) {
+            Intake.setDirection(DcMotorSimple.Direction.FORWARD);
             Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             Intake.setVelocity(1000);
         }else{
