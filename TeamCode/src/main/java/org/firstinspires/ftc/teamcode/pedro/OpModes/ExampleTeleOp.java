@@ -11,11 +11,11 @@ import com.pedropathing.follower.ManualDrive;
 public class ExampleTeleOp extends OpMode {
 
     private Follower follower;
-    //private Intake Intake;
+    private Intake Intake;
     @Override
     public void init() {
         follower = Constants.create(hardwareMap);
-        //Intake = new Intake(hardwareMap);
+        Intake = new Intake(hardwareMap);
     }
 
     @Override
@@ -41,5 +41,7 @@ public class ExampleTeleOp extends OpMode {
         telemetry.addData("Robot Y", robotPose.y());
         telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
         // Math.toDegrees() is a built-in java method
+
+        Intake.intake(gamepad1);
     }
 }
