@@ -19,8 +19,18 @@ public class Intake {
         }else{
             Intake.setVelocity(0);
         }
-
-
+        if (gamepad.bWasPressed()) {
+            Intake.setDirection(DcMotorSimple.Direction.REVERSE);
+            Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            Intake.setVelocity(-1000);
+        }else{
+            Intake.setVelocity(0);
+        }
+        /* if (gamepad.xWasPressed()) {
+            Intake.setTargetPosition(45);
+            Intake.setMode(servoname idk.RunMode.RUN_USING_ENCODER);
+        }else{
+            Intake.setTargetPosition(135);
+        }  */
     }
 }
-
