@@ -19,7 +19,7 @@ public class MotorTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         //Servo Servo = hardwareMap.get(Servo.class, "Servo");
-        DcMotorEx test = hardwareMap.get(DcMotorEx.class, "test");
+        DcMotorEx test = hardwareMap.get(DcMotorEx.class, "intake");
         //DcMotorEx test2 = hardwareMap.get(DcMotorEx.class, "test2");
         test.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
        // test2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -34,7 +34,7 @@ public class MotorTest extends LinearOpMode {
             double velocity = 1500;
 
 
-            test.setVelocity(3000);
+            test.setVelocity(1000);
             //test2.setPIDFCoefficients(1500);
 
 
