@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import org.firstinspires.ftc.teamcode.pedro.subsystem.Intake;
+import org.firstinspires.ftc.teamcode.pedro.subsystem.Shooter;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
 @TeleOp(name = "Example TeleOp")        // Run your subsystem's periodic updates if it uses PID/state machines
@@ -12,11 +13,14 @@ public class ExampleTeleOp extends OpMode {
 
     private Follower follower;
     private Intake Intake;
+    private Shooter Shooter;
 
     @Override
     public void init() {
         follower = Constants.create(hardwareMap);
         Intake =  new Intake(hardwareMap);
+        Shooter = new Shooter(hardwareMap);
+
     }
 
     @Override
@@ -42,7 +46,10 @@ public class ExampleTeleOp extends OpMode {
         telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
         // Math.toDegrees() is a built-in java method
 
-        Intake.intake(gamepad1);
+
+        Shooter.revNecter(gamepad1);
+        Shooter.revPollen(gamepad1);
+
 
 
     }
