@@ -18,19 +18,15 @@ public class Intake {
         intakeArmLeft = hwMap.get(Servo.class, "intakeArmLeft");
     }
     public void intake(Gamepad gamepad) {
-        if (gamepad.a){
-            Intake.setVelocity(100);
+        if (gamepad.a) {
+            Intake.setDirection(DcMotorSimple.Direction.FORWARD);
+            Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            Intake.setVelocity(500);
         }else{
             Intake.setVelocity(0);
         }
-    }
-    public void purge(Gamepad gamepad){
-        Intake.setDirection(DcMotorSimple.Direction.REVERSE);
-        if (gamepad.b){
-            Intake.setVelocity(100);
-        }else{
-            Intake.setVelocity(0);
-        }
+
+
     }
     public void intakeArmDown(Gamepad gamepad) {
         if (gamepad.b){
@@ -45,5 +41,4 @@ public class Intake {
 
     }
 }
-
 
