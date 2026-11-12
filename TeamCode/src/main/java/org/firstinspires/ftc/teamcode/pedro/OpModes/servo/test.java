@@ -5,27 +5,30 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-@TeleOp(name = "MotorTest", group = "Test")
+@TeleOp(name = "ServoTest", group = "Test")
 public class test extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        //Servo Servo = hardwareMap.get(Servo.class, "Servo");
-        Servo necterGate = hardwareMap.get(Servo.class, "necterGate");
 
+        Servo necterGate = hardwareMap.get(Servo.class, "necterGate");
+        double servoAngle;
 
         waitForStart();
 
         while (opModeIsActive()) {
-            double postition;
-            double velocity = 1500;
-
-
-            if (gamepad1.xWasPressed()) {
-                necterGate.setPosition (69);
+            servoAngle = necterGate.getPosition();
+            if (gamepad1.dpad_up){
+                servoAngle +=.01;
+            }else if(gamepad1.dpad_down){
+                servoAngle -=.01;
+            }else if(gamepad1.a){
+                servoAngle = .49;
             }
 
-
+            necterGate.setPosition(servoAngle);
+            telemetry.addData("ServoAngle", servoAngle);
+            telemetry.update();
         }
 
 

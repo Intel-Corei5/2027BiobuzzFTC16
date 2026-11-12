@@ -12,22 +12,23 @@ public class Intake {
     private Servo intakeArmRight;
     private Servo intakeArmLeft;
     private double armAngle = 0;
+
+    private double IntakeSpeed = 250;
     public Intake(HardwareMap hwMap) {
         Intake = hwMap.get(DcMotorEx.class, "intake");
         intakeArmRight = hwMap.get(Servo.class,"intakeArmRight");
         intakeArmLeft = hwMap.get(Servo.class, "intakeArmLeft");
     }
     public void intake(Gamepad gamepad) {
+        Intake.setDirection(DcMotorSimple.Direction.FORWARD);
+        Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         if (gamepad.a) {
-            Intake.setDirection(DcMotorSimple.Direction.FORWARD);
-            Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            Intake.setVelocity(500);
-        }else{
+            Intake.setVelocity(IntakeSpeed);
+        }else {
             Intake.setVelocity(0);
         }
-
-
     }
+
     public void intakeArmDown(Gamepad gamepad) {
         if (gamepad.b){
 
