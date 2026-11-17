@@ -47,10 +47,11 @@ public class ExampleTeleOp extends OpMode {
         // Math.toDegrees() is a built-in java method
 
 
-        Intake.intake(gamepad1);
-        Intake.intake(gamepad1);
-        Shooter.rapidNecter(gamepad1);
-        Shooter.rapidPollen(gamepad1);
+        Intake.intake(gamepad2);
+        Intake.intake(gamepad2);
+        Shooter.rapidNecter(gamepad2);
+        Shooter.rapidPollen(gamepad2);
+
 
     }
 }

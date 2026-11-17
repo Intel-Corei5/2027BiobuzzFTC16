@@ -38,10 +38,11 @@ public class Shooter {
          PIDFCoefficients pidfpollenCoeffeciants = new PIDFCoefficients(1.29003937,0.129003937,0,12.900393701);
          PIDFCoefficients pidfNecterCoeffeciants = new PIDFCoefficients(1.33199187, 0.133199187, 0, 13.319918699);
          PollenMotor.setVelocityPIDFCoefficients(1.29003937,0.129003937,0,12.900393701);
+         NecterMotor.setVelocityPIDFCoefficients(1.33199187, 0.133199187, 0, 13.319918699);
          NecterServo.setPosition(necterGateClosed);
          PollenServo.setPosition(pollenGateClosed);
-        PollenMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        NecterMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         PollenMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         NecterMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
 
@@ -72,6 +73,14 @@ public class Shooter {
             PollenServo.setPosition(necterGateClosed);
             PollenMotor.setVelocity(0);
         }
+    }
+    public void powerHandling(Gamepad gamepad){
+        if (gamepad.left_bumper){
+
+        }else-if{
+
+        }
+
     }
 
     public void necterGateClosed(){

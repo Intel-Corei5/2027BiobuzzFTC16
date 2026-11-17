@@ -23,6 +23,12 @@ public class Intake {
         Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Intake.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER,intakePID);
     }
+    public void powerHandling(Gamepad gamepad){
+        if (gamepad.dpad_up){
+
+        }
+
+    }
     public void intake(Gamepad gamepad) {
         Intake.setDirection(DcMotorSimple.Direction.FORWARD);
         if (gamepad.a) {
