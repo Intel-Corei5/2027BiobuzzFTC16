@@ -50,6 +50,7 @@ public class ExampleTeleOp extends OpMode {
         Intake.intake(gamepad1);
         Intake.intake(gamepad1);
         Shooter.rapidNecter(gamepad1);
+        Shooter.rapidPollen(gamepad1);
 
     }
 }

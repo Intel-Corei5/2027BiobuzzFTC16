@@ -16,7 +16,7 @@ public class MaxVelocity extends LinearOpMode {
     double MaxVelocity;
     @Override
     public void runOpMode() {
-        necterShooter = hardwareMap.get(DcMotorEx.class, "necterShooter");
+        necterShooter = hardwareMap.get(DcMotorEx.class, "intake");
         necterShooter.setDirection(DcMotorSimple.Direction.REVERSE);
         necterShooter.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         waitForStart();

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Intake {
@@ -18,17 +19,26 @@ public class Intake {
         Intake = hwMap.get(DcMotorEx.class, "intake");
         intakeArmRight = hwMap.get(Servo.class,"intakeArmRight");
         intakeArmLeft = hwMap.get(Servo.class, "intakeArmLeft");
+        PIDFCoefficients intakePID = new PIDFCoefficients(5.461166667, 0.546116667, 0, 54.611666667);
+        Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        Intake.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER,intakePID);
     }
     public void intake(Gamepad gamepad) {
         Intake.setDirection(DcMotorSimple.Direction.FORWARD);
-        Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         if (gamepad.a) {
             Intake.setVelocity(IntakeSpeed);
         }else {
             Intake.setVelocity(0);
         }
     }
-
+    public void purge(Gamepad gamepad){
+        Intake.setDirection(DcMotorSimple.Direction.REVERSE);
+        if (gamepad.b){
+            Intake.setVelocity(IntakeSpeed);
+        }else{
+            Intake.setVelocity(0);
+        }
+    }
     public void intakeArmDown(Gamepad gamepad) {
         if (gamepad.b){
 

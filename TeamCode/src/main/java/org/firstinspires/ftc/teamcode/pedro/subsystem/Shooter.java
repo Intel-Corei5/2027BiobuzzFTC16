@@ -45,6 +45,7 @@ public class Shooter {
 
 
     public void rapidNecter(Gamepad gamepad){
+        NecterMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         if (gamepad.right_trigger_pressed) {
             NecterServo.setPosition(necterGateOpened);
             NecterMotor.setVelocity(1650);
@@ -54,12 +55,12 @@ public class Shooter {
         }
     }
     public void rapidPollen(Gamepad gamepad){
-        if (gamepad.right_trigger_pressed) {
-            NecterServo.setPosition(necterGateOpened);
-            NecterMotor.setVelocity(1650);
+        if (gamepad.left_trigger_pressed) {
+            PollenServo.setPosition(necterGateOpened);
+            PollenMotor.setVelocity(1650);
         }else{
-            NecterServo.setPosition(necterGateClosed);
-            NecterMotor.setVelocity(0);
+            PollenServo.setPosition(necterGateClosed);
+            PollenMotor.setVelocity(0);
         }
     }
 
