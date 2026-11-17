@@ -14,7 +14,7 @@ public class Intake {
     private Servo intakeArmLeft;
     private double armAngle = 0;
 
-    private double IntakeSpeed = 250;
+    private double IntakeSpeed = 2500;
     public Intake(HardwareMap hwMap) {
         Intake = hwMap.get(DcMotorEx.class, "intake");
         intakeArmRight = hwMap.get(Servo.class,"intakeArmRight");
