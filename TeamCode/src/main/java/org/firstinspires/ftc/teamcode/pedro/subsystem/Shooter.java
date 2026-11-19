@@ -74,18 +74,15 @@ public class Shooter {
             PollenMotor.setVelocity(0);
         }
     }
-    //public void powerHandling(Gamepad gamepad){
-      //  if (gamepad.left_bumper){
+    public void powerHandling(Gamepad gamepad) {
+        if (gamepad.left_bumper) {
+            targetVelocityPollen = targetVelocityPollen - 10;
+        } else if (gamepad.right_bumper) {
+            targetVelocityPollen = targetVelocityPollen + 10;
+        }
 
-       // }else-if{
 
-        //}
-
-    //}
-
-    //public void necterGateClosed(){
-        //NecterServo.setPosition(necterGateClosed);
-    //}
+    }
 
 }
 
