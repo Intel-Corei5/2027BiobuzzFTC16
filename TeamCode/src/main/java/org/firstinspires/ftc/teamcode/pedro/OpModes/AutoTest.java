@@ -22,24 +22,17 @@ public class AutoTest extends OpMode {
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     // Poses
-    private final Pose startPose = poseFactory.of(24, 24, 0);
-    private final Pose scorePose = poseFactory.of(48, 48, 90);
-    private final Pose parkPose = poseFactory.of(72, 48, 90);
-
+    private final Pose start = poseFactory.of(56, 8, 90);
+    private final Pose test = poseFactory.of(56, 23.8872, 180);
     // Path methods
     private Path startToScore() {
-        return line(startPose, scorePose).linear(startPose, scorePose);
+        return line(start, test).linear(start, test);
     }
 
-    private Path park(){
-        return line(scorePose, parkPose).linear(scorePose, parkPose);
-    }
 
     private Command autoRoutine() {
         return sequential(
-                follow(follower, startToScore()),
-                // Add mechanism commands here.
-                follow(follower, park())
+                follow(follower, startToScore())
         );
     }
 
@@ -48,7 +41,7 @@ public class AutoTest extends OpMode {
         Scheduler.reset();
 
         follower = Constants.create(hardwareMap);
-        follower.setPose(startPose);
+        follower.setPose(start);
         follower.update();
     }
 
