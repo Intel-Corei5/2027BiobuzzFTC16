@@ -15,6 +15,11 @@ import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.teamcode.pedro.subsystem.Shooter;
 
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
@@ -22,6 +27,8 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 public class BlueScoringSideScoreOncePark extends LinearOpMode {
 
     private Follower follower;
+    private ElapsedTime shotTimer = new ElapsedTime();
+
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
@@ -35,6 +42,8 @@ public class BlueScoringSideScoreOncePark extends LinearOpMode {
     public Command autoRoutine() {
         return sequential(
                 follow(follower, toScore()),
+                Shooter.autoPollen(hardwareMap.get(DcMotorEx.class, "pollenShooter"), hardwareMap.get(Servo.class, "pollenGate"),
+                        0,1,1650, shotTimer,2),
                 follow(follower, toPark())
         );
     }
