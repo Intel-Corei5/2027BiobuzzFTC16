@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.pedro.OpModes;
+package org.firstinspires.ftc.teamcode.pedro.OpModes.Autos;
 
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;
@@ -8,7 +8,11 @@ import com.pedropathing.math.Pose;
 import com.pedropathing.paths.Path;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.pedro.subsystem.Shooter;
 import static com.pedropathing.api.Paths.line;
 import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.groups.Groups.sequential;
@@ -20,6 +24,8 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 public class AutoTest extends OpMode {
     private Follower follower;
     private final PoseFactory poseFactory = PoseFactory.degrees();
+   private ElapsedTime shotTimer = new ElapsedTime();
+
 
     // Poses
     private final Pose start = poseFactory.of(56, 8, 90);
@@ -32,7 +38,9 @@ public class AutoTest extends OpMode {
 
     private Command autoRoutine() {
         return sequential(
-                follow(follower, startToScore())
+                follow(follower, startToScore()),
+                Shooter.autoPollen(hardwareMap.get(DcMotorEx.class, "pollenShooter"), hardwareMap.get(Servo.class, "pollenGate"),
+                        0,1,1650, shotTimer,2 )
         );
     }
 

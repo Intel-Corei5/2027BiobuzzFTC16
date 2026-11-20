@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.pedro.subsystem;
 
+import com.pedropathing.ivy.Command;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -7,6 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Intake {
     private DcMotorEx Intake;
@@ -23,12 +25,7 @@ public class Intake {
         Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Intake.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER,intakePID);
     }
-    public void powerHandling(Gamepad gamepad){
-        if (gamepad.dpad_up){
 
-        }
-
-    }
     public void intake(Gamepad gamepad) {
         Intake.setDirection(DcMotorSimple.Direction.FORWARD);
         if (gamepad.a) {
@@ -39,14 +36,14 @@ public class Intake {
     }
     public void purge(Gamepad gamepad){
         Intake.setDirection(DcMotorSimple.Direction.REVERSE);
-        if (gamepad.b){
+        if (gamepad.xWasPressed()){
             Intake.setVelocity(IntakeSpeed);
         }else{
             Intake.setVelocity(0);
         }
     }
     public void intakeArmDown(Gamepad gamepad) {
-        if (gamepad.b){
+        if (gamepad.bWasPressed()){
 
             intakeArmRight.setPosition(100);
             intakeArmLeft.setPosition(100);
@@ -56,6 +53,17 @@ public class Intake {
             intakeArmLeft.setPosition(armAngle);
         }
 
+    }
+    public static Command autoIntake(DcMotorEx Intake, double intakeSpeed, double intakeSeconds, ElapsedTime intakeTime) {
+        return Command.build()
+                .setStart(() -> {
+                    if(Intake.getVelocity()>=intakeSpeed){
+                        intakeTime.reset();
+                    }
+                })
+                .setDone(() -> intakeTime.seconds() >= intakeSeconds )
+                .setEnd(endCondition -> Intake.setVelocity(0))
+                .requiring(Intake);
     }
 }
 

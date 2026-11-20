@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.pedro.OpModes;
+package org.firstinspires.ftc.teamcode.pedro.OpModes.Tests;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.math.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -49,8 +49,8 @@ public class ExampleTeleOp extends OpMode {
 
         Intake.intake(gamepad2);
         Intake.intake(gamepad2);
-        Shooter.rapidNecter(gamepad2);
-        Shooter.rapidPollen(gamepad2);
+        //Shooter.rapidNecter(gamepad2);
+        //Shooter.rapidPollen(gamepad2);
 
 
     }

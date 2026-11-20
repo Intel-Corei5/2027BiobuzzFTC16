@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.pedro.OpModes;
+package org.firstinspires.ftc.teamcode.pedro.OpModes.Tests;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;

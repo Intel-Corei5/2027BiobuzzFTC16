@@ -6,11 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.pedro.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.pedro.subsystem.Shooter;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
-import org.firstinspires.ftc.teamcode.pedro.subsystem.Intake;
-import org.firstinspires.ftc.teamcode.pedro.subsystem.Shooter;
 
 @TeleOp(name = "Example TeleOp")
-public class RobotCentric extends OpMode {
+public class RobotCentricTeleOp extends OpMode {
 
     private Follower follower;
     private Intake Intake;
@@ -35,7 +33,9 @@ public class RobotCentric extends OpMode {
         follower.update();
         Intake.intake(gamepad2);
         Intake.intake(gamepad2);
+        Intake.purge(gamepad2);
         Shooter.rapidNecter(gamepad2);
         Shooter.rapidPollen(gamepad2);
+
     }
 }
